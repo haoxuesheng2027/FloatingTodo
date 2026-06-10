@@ -1,2 +1,0 @@
-# FloatingTodo
-Floating Notes App
