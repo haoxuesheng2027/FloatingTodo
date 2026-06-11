@@ -1,1 +1,3 @@
-cGx1Z2lucyB7CiAgICBpZCgiY29tLmFuZHJvaWQuYXBwbGljYXRpb24iKSB2ZXJzaW9uICI4LjIuMiIgYXBwbHkgZmFsc2UKfQo=
+plugins {
+    id("com.android.application") version "8.2.2" apply false
+}
