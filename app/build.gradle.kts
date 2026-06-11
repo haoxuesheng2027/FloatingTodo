@@ -1,1 +1,46 @@
-cGx1Z2lucyB7CiAgICBpZCgiY29tLmFuZHJvaWQuYXBwbGljYXRpb24iKQp9CmFuZHJvaWQgewogICAgbmFtZXNwYWNlID0gImNvbS5mbG9hdHRvZG8uYXBwIgogICAgY29tcGlsZVNkayA9IDM0CiAgICBkZWZhdWx0Q29uZmlnIHsKICAgICAgICBhcHBsaWNhdGlvbklkID0gImNvbS5mbG9hdHRvZG8uYXBwIgogICAgICAgIG1pblNkayA9IDI2CiAgICAgICAgdGFyZ2V0U2RrID0gMzQKICAgICAgICB2ZXJzaW9uQ29kZSA9IDEKICAgICAgICB2ZXJzaW9uTmFtZSA9ICIxLjAuMCIKICAgIH0KICAgIHNpZ25pbmdDb25maWdzIHsKICAgICAgICBjcmVhdGUoInJlbGVhc2UiKSB7CiAgICAgICAgICAgIHN0b3JlRmlsZSA9IGZpbGUoInJlbGVhc2Uua2V5c3RvcmUiKQogICAgICAgICAgICBzdG9yZVBhc3N3b3JkID0gIjEyMzQ1NiIKICAgICAgICAgICAga2V5QWxpYXMgPSAiZmxvYXR0b2RvIgogICAgICAgICAgICBrZXlQYXNzd29yZCA9ICIxMjM0NTYiCiAgICAgICAgfQogICAgfQogICAgYnVpbGRUeXBlcyB7CiAgICAgICAgcmVsZWFzZSB7CiAgICAgICAgICAgIGlzTWluaWZ5RW5hYmxlZCA9IGZhbHNlCiAgICAgICAgICAgIHNpZ25pbmdDb25maWcgPSBzaWduaW5nQ29uZmlnc1sicmVsZWFzZSJdCiAgICAgICAgfQogICAgfQogICAgY29tcGlsZU9wdGlvbnMgewogICAgICAgIHNvdXJjZUNvbXBhdGliaWxpdHkgPSBKYXZhVmVyc2lvbi5WRVJTSU9OXzE3CiAgICAgICAgdGFyZ2V0Q29tcGF0aWJpbGl0eSA9IEphdmFWZXJzaW9uLlZFUlNJT05fMTcKICAgIH0KfQpkZXBlbmRlbmNpZXMgewogICAgaW1wbGVtZW50YXRpb24oImFuZHJvaWR4LmFwcGNvbXBhdDphcHBjb21wYXQ6MS42LjEiKQogICAgaW1wbGVtZW50YXRpb24oImNvbS5nb29nbGUuYW5kcm9pZC5tYXRlcmlhbDptYXRlcmlhbDoxLjExLjAiKQogICAgaW1wbGVtZW50YXRpb24oImFuZHJvaWR4LnJvb206cm9vbS1ydW50aW1lOjIuNi4xIikKICAgIGFubm90YXRpb25Qcm9jZXNzb3IoImFuZHJvaWR4LnJvb206cm9vbS1jb21waWxlcjoyLjYuMSIpCiAgICBpbXBsZW1lbnRhdGlvbigib3JnLm5hbm9odHRwZDpuYW5vaHR0cGQ6Mi4zLjEiKQp9Cg==
+plugins {
+    id("com.android.application")
+}
+android {
+    namespace = "com.floattodo.app"
+    compileSdk = 34
+    defaultConfig {
+        applicationId = "com.floattodo.app"
+        minSdk = 26
+        targetSdk = 34
+        versionCode = 2
+        versionName = "1.0.4"
+    }
+    signingConfigs {
+        create("release") {
+            storeFile = file("release.keystore")
+            storePassword = "123456"
+            keyAlias = "floattodo"
+            keyPassword = "123456"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig = signingConfigs["release"]
+        }
+        release {
+            isMinifyEnabled = false
+            signingConfig = signingConfigs["release"]
+        }
+    }
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+dependencies {
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    implementation("org.nanohttpd:nanohttpd:2.3.1")
+}
